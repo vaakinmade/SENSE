@@ -1,0 +1,135 @@
+<% @page_title_icon_class = "fa fa-edit" %>
+<% @page_title = "Appointment" %>
+
+<!-- END STYLE CUSTOMIZER -->
+
+<% if !flash[:errors].blank? %>
+        			<div class="alert alert-danger fade-in" style="max-width:100%; margin:0 auto; text-align:center;">
+        			<a class="close" data-dismiss="alert">×</a>
+          				<%= flash[:errors] %>
+        			</div> <br>
+      		<% end %>
+
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box light-grey" style="max-width:1000px; margin:0 auto; ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Edit Appointment
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+						<%= form_for(:appointment, :url => {:action => 'update',  :id => @appointment.id}, :html => {:id => "form_sample_1", :class => 'form-horizontal'}) do |f| %>
+															
+								<div class="form-body">
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Appointment Title
+										</label>
+										<div class="col-md-9">
+											<%= f.text_field(:title, :class => 'form-control', :placeholder => 'Enter type or title of appointment') %>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3">Patient
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:patient_id, Patient.all, :id, :name, {:prompt=>'Select Patient'}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Doctor
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:doctor_id, Doctor.all, :id, :name, {:prompt => @appointment.doctor.name}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Date
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-3">
+											<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-start-date="+0d">
+												<%= f.text_field(:date, :class => 'form-control', :required => :true) %>
+												<span class="input-group-btn">
+													<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											<!-- /input-group -->
+											<span class="help-block">
+												 Select date
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Start Time
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-3">
+											<div class="input-group">
+												<%= f.text_field(:start, :value => @appointment.start.strftime("%I:%M %p"), :class => 'form-control timepicker timepicker-no-seconds', :required => :true) %>
+												<span class="input-group input-group-btn">
+													<button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group hidden">
+										<label class="control-label col-md-3">End Time
+										</label>
+										<div class="col-md-3">
+											<div class="input-group">
+												<% f.text_field(:end, :value => @appointment.end.strftime("%I:%M %p"), :class => 'form-control timepicker timepicker-no-seconds') %>
+												<span class="input-group input-group-btn">
+													<button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Save", :class => 'btn green')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+

@@ -1,0 +1,263 @@
+<% @page_title_icon_class = "fa fa-wrench" %>
+<% @page_title = "Bed Allotment" %>
+
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box light-grey">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-globe"></i>Bed Allotment
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="btn-group">
+								<a class="btn green" data-toggle="modal" href="#large">
+								Add New <i class="fa fa-plus"></i>
+								</a>
+									
+								</div>
+								<div class="btn-group pull-right">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li>
+											<a href="#">
+												 Print
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												 Save as PDF
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												 Export to Excel
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<table class="table table-striped table-bordered table-hover" id="sample_2">
+							<thead>
+							<tr>
+								<th class="table-checkbox">
+									<input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"/>
+								</th>
+								<th>
+									 Bed Number
+								</th>
+								<th>
+									 Ward Type
+								</th>
+								<th>
+									 Patient
+								</th>
+								<th>
+									 Allocation date
+								</th>
+								<th>
+									 Discharge date
+								</th>
+								<th>
+									 Actions
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<% @alloted_beds.each do |alloted_bed| %>
+														
+							<tr class="odd gradeX">
+								<td>
+									<input type="checkbox" class="checkboxes" value="1"/>
+								</td>
+								<td>
+									<% if alloted_bed.bed.wardtype.split.size > 1 %>
+										<% if alloted_bed.bed.wardtype.split.size == 2 %>
+											<%= alloted_bed.bed.wardtype.split.first.first.upcase + alloted_bed.bed.wardtype.split.second.first.upcase + 0.to_s + alloted_bed.bed.bednumber.to_s %>
+										<% elsif alloted_bed.bed.wardtype.split.size > 2 %>
+											<%= alloted_bed.bed.wardtype.split.first.first.upcase + alloted_bed.bed.wardtype.split.second.first.upcase + alloted_bed.bed.wardtype.split.third.first.upcase + 0.to_s + alloted_bed.bed.bednumber.to_s %>
+										<% end %>
+									<% else %>
+										<%= alloted_bed.bed.wardtype[0].upcase + alloted_bed.bed.wardtype[1].upcase + 0.to_s + alloted_bed.bed.bednumber.to_s %>
+									<% end %>
+								</td>
+								<td>
+									<%= alloted_bed.bed.wardtype %>
+								</td>
+								<td>
+									<%= alloted_bed.patient.name %>
+								</td>
+								<td>
+									<%= alloted_bed.allotmentdate %>
+								</td>
+								<td>
+									<%= alloted_bed.dischargedate %>
+								</td>
+														
+								<td>
+								<%= link_to({:action => 'show', :id => alloted_bed.id}, :class => 'btn default btn-xs default') do %>
+								<i class=""></i> More... 
+								<% end %>
+
+								<%= link_to({:action => 'edit', :id => alloted_bed.id}, :class => 'btn default btn-xs blue') do %>
+								<i class="fa fa-edit"></i> Edit 
+								<% end %>
+								
+								<%= link_to({:action => 'delete', :id => alloted_bed.id}, :class => 'btn default btn-xs red') do %>
+								<i class="fa fa-trash-o"></i> Delete 
+								<% end %>
+								</td>
+							</tr>
+							
+														
+							<% end %>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+							<div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true" >
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<h4 class="modal-title"><strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong></h4>
+										</div>
+										<div class="modal-body">
+										
+										<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box green ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Add Bed
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form " >
+							<%= form_for(:alloted_bed, :url => {:action => 'create'}, :html => {:id => "form_sample_1", :class => 'form-horizontal'}) do |f| %>
+															
+								<div class="form-body" >
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+
+									<div class="form-group">
+										<div class="col-md-9">
+											<%= f.text_field(:alloted_by, :class => 'form-control', :type => 'hidden', :value => session[:role] + " " + session[:name]) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Ward
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:bed_id, Bed.where(:status => "available"), :id, :bedward, {:prompt=>'Select Bed'}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Patient
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:patient_id, Patient.all, :id, :name, {:prompt=>'Select Patient'}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+												<label class="control-label col-md-3">Allotment date
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-3">
+													<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-start-date="+0d">
+														<%= f.text_field(:allotmentdate, :class => 'form-control', :required => :true) %>
+														<span class="input-group-btn">
+															<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+														</span>
+													</div>
+													<!-- /input-group -->
+													<span class="help-block">
+														 Select date
+													</span>
+												</div>
+									</div>
+
+									<div class="form-group">
+												<label class="control-label col-md-3">Discharge date
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-3">
+													<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-start-date="+0d">
+														<%= f.text_field(:dischargedate, :class => 'form-control', :required => :true) %>
+														<span class="input-group-btn">
+															<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+														</span>
+													</div>
+													<!-- /input-group -->
+													<span class="help-block">
+														 Select date
+													</span>
+												</div>
+									</div>
+
+									
+								</div>
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Submit", :class => 'btn green')%>
+										<button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+						</div>
+										<div class="modal-footer">
+											<button type="button" class="btn default" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -->
+
+							<!-- END EXAMPLE TABLE PORTLET-->
+
+						</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->

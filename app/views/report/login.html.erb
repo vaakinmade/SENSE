@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
+Version: 2.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>Login :: Sense</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<%= stylesheet_link_tag('font-awesome.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap.min.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('uniform.default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<!-- END GLOBAL MANDATORY STYLES -->
+
+<!-- BEGIN PAGE LEVEL STYLES -->
+<%= stylesheet_link_tag('select2.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('select2-metronic.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- BEGIN THEME STYLES -->
+<%= stylesheet_link_tag('style-metronic.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style-responsive.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('plugins.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('login-soft.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('custom.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="login">
+<% if !flash[:notice].blank? %>
+	<div class="alert alert-danger flash fade-in" style="max-width:500px; margin:0 auto; text-align:center;">
+		<a class="close" data-dismiss="alert">×</a>
+				<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<!-- BEGIN LOGO -->
+<div class="logo" style="margin-left:-50px;">
+	<h4 class=""><img src="/assets/electrical_sensor2.png" alt=""/><font color="grey"><strong> SENSE</strong></font></h4>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+	<!-- BEGIN LOGIN FORM -->
+	<%= form_tag({:action => 'attempt_login'}, :id => "form_sample_1", :class => 'login-form') do %>
+		<h3 class="form-title">Login to your account</h3>
+		<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			<span>
+				 Enter username/email and password. Your email is your username. 
+			</span>
+		</div>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">Username</label>
+			<div class="input-icon">
+				<i class="fa fa-user"></i>
+				<%= text_field_tag(:username, nil, :value => session[:temp], :class => 'form-control placeholder-no-fix', :type => 'email', :autocomplete => 'off', :placeholder => 'Email', :required => :true) %>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Password</label>
+			<div class="input-icon">
+				<i class="fa fa-lock"></i>
+				<%= text_field_tag(:password, nil, :class => 'form-control placeholder-no-fix', :type => :password, :autocomplete => 'off', :placeholder => 'Password', :required => :true) %>
+			</div>
+		</div>
+		<div class="form-actions">
+			<label class="checkbox">
+			<input type="checkbox" name="remember" value="1"/> Remember me </label>
+			<button type="submit" class="btn blue pull-right">
+			Login <i class="m-icon-swapright m-icon-white"></i>
+			</button>
+		</div>
+		<div class="login-options hidde">
+			<h4>Or login with</h4>
+			<ul class="social-icons">
+				<li>
+					<a class="facebook" data-original-title="facebook" href="#">
+					</a>
+				</li>
+				<li>
+					<a class="twitter" data-original-title="Twitter" href="#">
+					</a>
+				</li>
+				<li>
+					<a class="googleplus" data-original-title="Goole Plus" href="#">
+					</a>
+				</li>
+				<li>
+					<a class="linkedin" data-original-title="Linkedin" href="#">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="forget-password">
+			<h4>Forgot your password ?</h4>
+			<p>
+				 no worries, click
+				<a href="javascript:;" id="forget-password">
+					 here
+				</a>
+				 to reset your password.
+			</p>
+		</div>
+		<div class="create-account">
+			<p>
+				 Don't have an account yet ?&nbsp;
+				<a href="javascript:;" id="">
+					 Contact admin
+				</a>
+			</p>
+		</div>		
+	<% end %>
+	<!-- END LOGIN FORM -->
+	<!-- BEGIN FORGOT PASSWORD FORM -->
+	<form class="forget-form" action="/index" method="post">
+		<h3>Forget Password ?</h3>
+		<p>
+			 Enter your e-mail address below to reset your password.
+		</p>
+		<div class="form-group">
+			<div class="input-icon">
+				<i class="fa fa-envelope"></i>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email"/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button type="button" id="back-btn" class="btn">
+			<i class="m-icon-swapleft"></i> Back </button>
+			<button type="submit" class="btn blue pull-right">
+			Submit <i class="m-icon-swapright m-icon-white"></i>
+			</button>
+		</div>
+	</form>
+	<!-- END FORGOT PASSWORD FORM -->
+	
+</div>
+<!-- END LOGIN -->
+<!-- BEGIN COPYRIGHT -->
+<div class="copyright">
+	 2015 &copy; Sense Systems
+</div>
+<!-- END COPYRIGHT -->
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<script src="assets/plugins/excanvas.min.js"></script> 
+<![endif]-->
+
+<%= javascript_include_tag('jquery-1.10.2.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery-migrate-1.2.1.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-hover-dropdown.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.slimscroll.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.blockui.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.cokie.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.uniform.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END CORE PLUGINS -->
+
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<%= javascript_include_tag('jquery.validate.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.backstretch.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('select2.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<%= javascript_include_tag('app.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('login-soft.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script>
+jQuery(document).ready(function() {    
+   App.init(); // initlayout and core plugins
+   Login.init();
+});
+
+window.setTimeout(function() {
+  $(".flash").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+  });
+}, 10000);
+
+</script>
+</body>
+<!-- END BODY -->
+</html>

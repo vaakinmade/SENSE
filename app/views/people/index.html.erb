@@ -1,0 +1,181 @@
+<% @page_title_icon_class = "fa fa-edit" %>
+<% @page_title = "Appointment" %>
+
+			<!-- END STYLE CUSTOMIZER -->
+			
+			
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box light-grey">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-globe"></i>Appointments
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="btn-group">
+								
+								<%= link_to('#large', data: { toggle: "modal"}, :class => 'btn green') do %>
+								<i class="fa fa-plus"></i> Add New 
+								<% end %>
+								
+								</div>
+								<div class="btn-group pull-right">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li>
+											<a href="#">
+												 Print
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												 Save as PDF
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												 Export to Excel
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<h1>Listing people</h1>
+
+<table class='table' id='people_table'>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <%# Render table row partial for each person object %>
+      <%= render partial: 'table_row', locals: {person: person} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%# Added Bootstrap data modal attribute %>
+<%= link_to 'New Person', '#large', 'data-toggle' => 'modal' %>
+
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET
+
+						
+						<div class="col-md-6 col-sm-6">-->
+							<!-- BEGIN PORTLET-->
+
+							<% if session[:role] == "Doctor" %>
+							<div class="portlet box blue calendar">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-calendar"></i>Appointment Schedule
+									</div>
+								</div>
+								<div class="portlet-body light-grey">
+									<div id="calendar">
+									</div>
+								</div>
+							</div>
+							<% end %>
+						<!-- END PORTLET
+						</div>-->
+
+
+
+
+
+
+					<div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<h4 class="modal-title"><strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong></h4>
+								</div>
+								<div class="modal-body">
+												
+												<!-- BEGIN SAMPLE FORM PORTLET-->
+							<div class="portlet box green ">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-reorder"></i> Add Appointment
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="" class="reload">
+										</a>
+									</div>
+								</div>
+								<div class="portlet-body form">
+									
+								<%# Render the new person form (passing modal => true to enable remote => true) %>
+        						<%= render 'form', modal: true %>
+
+								</div>
+							</div>
+							<!-- END SAMPLE FORM PORTLET-->
+
+								</div>
+												<div class="modal-footer">
+													<button type="button" class="btn default" data-dismiss="modal">Close</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+							<!-- /.modal -->
+
+
+
+
+					<div class="modal fade bs-modal-lg" id="more" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<h4 class="modal-title"><strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong></h4>
+								</div>
+								<div class="modal-body">
+															
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+			<!-- /.modal -->
+
+
+							<!-- END EXAMPLE TABLE PORTLET-->
+
+						</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->

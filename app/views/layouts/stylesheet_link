@@ -1,0 +1,21 @@
+
+
+<%= stylesheet_link_tag('font-awesome.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap.min.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('uniform.default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('jquery.gritter.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('daterangepicker-bs3.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('fullcalendar.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('jqvmap.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('jquery.easy-pie-chart.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style-metronic.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style-responsive.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('plugins.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('tasks.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('print.css', :media => 'print', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('custom.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+ 
+<%= stylesheet_link_tag('application.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('default.css', :media => 'all', :id => 'style_color', :type => 'text/css', "data-turbolinks-track" => true) %>

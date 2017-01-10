@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
+Version: 2.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-j">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title><%= @page_title || "Admin"%> :: Sense</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+
+<%# stylesheet_link_tag('scaffolds.css.scss', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('font-awesome.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap.min.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('uniform.default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+
+<%= stylesheet_link_tag('select2.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('select2-metronic.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap-wysihtml5.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('DT_bootstrap.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('datepicker.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap-timepicker.min.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%# stylesheet_link_tag('datetimepicker.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('jquery.gritter.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('daterangepicker-bs3.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('fullcalendar.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('bootstrap-select.min.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('multi-select.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+
+
+
+<%= stylesheet_link_tag('style-metronic.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('style-responsive.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('plugins.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('tasks.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('default.css', :media => 'all', :type => 'text/css', "data-turbolinks-track" => true) %>
+<%= stylesheet_link_tag('print.css', :media => 'print', :type => 'text/css', "data-turbolinks-track" => true) %>
+
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-fixed-top">
+	<!-- BEGIN TOP NAVIGATION BAR -->
+	<div class="header-inner navbar-inverse">
+		<!-- BEGIN LOGO -->
+		<a class="navbar-inverse navbar-brand" href="/admin/index">
+		<strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong>
+		</a>
+		
+		<!-- END LOGO -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="/assets/menu-toggler.png" alt=""/>
+		</a>
+		<!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN TOP NAVIGATION MENU -->
+		<ul class="nav navbar-nav pull-right">
+			<!-- BEGIN NOTIFICATION DROPDOWN -->
+			
+			<!-- END NOTIFICATION DROPDOWN -->
+			<!-- BEGIN INBOX DROPDOWN -->
+			<!-- END INBOX DROPDOWN -->
+			<!-- BEGIN TODO DROPDOWN -->
+			<!-- END TODO DROPDOWN -->
+			<!-- BEGIN USER LOGIN DROPDOWN -->
+			<li class="dropdown user">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username">
+						 <i class="fa fa-user"> </i>
+					</span>
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#">
+							<i class="fa fa-user"> </i> <%= session[:name] %>
+						</a>
+					</li>
+					<li class="divider">
+					</li>
+					<li>
+						<a href="javascript:;" id="trigger_fullscreen">
+							<i class="fa fa-arrows"></i> Full Screen
+						</a>
+					</li>
+					
+					<li>
+						<a href="/access/logout">
+							<i class="fa fa-power-off"></i> Log Out
+						</a>
+					</li>
+				</ul>
+			</li>
+			<!-- END USER LOGIN DROPDOWN -->
+		</ul>
+		<!-- END TOP NAVIGATION MENU -->
+	</div>
+	<!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+	<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- add "navbar-no-scroll" class to disable the scrolling of the sidebar menu -->
+			<!-- BEGIN SIDEBAR MENU -->
+			<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+				<li class="sidebar-toggler-wrapper">
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler hidden-phone">
+					</div>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				</li>
+				<li class="sidebar-search-wrapper">
+					<div style="min-height:50px;">
+						
+					</div>
+				</li>
+				<% if session[:role] == "Nurse" or session[:role] == "Doctor" %>
+				<% if @page_title == "Dashboard" %>
+				<li class="start active">
+					<a href="/dashboard">
+						<i class="fa fa-home"></i>
+						<span class="title">
+							Dashboard
+						</span>
+						
+					</a>
+				</li>
+				<% else %>
+				<li class="start">
+					<a href="/dashboard">
+						<i class="fa fa-home"></i>
+						<span class="title">
+							Dashboard
+						</span>
+						
+					</a>
+				</li>
+				<% end %>
+
+				<% if @page_title == "Appointment" %>
+        			<li class="active">
+						<a href="/appointment">
+							<i class="fa fa-edit"></i>
+							<span class="title">
+								Appointment
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/appointment">
+							<i class="fa fa-edit"></i>
+							<span class="title">
+								Appointment
+							</span>
+						</a>
+					</li>
+				<% end %>
+
+				<% if @page_title == "Patient" %>
+        			<li class="active">
+						<a href="/patient">
+							<i class="fa fa-users"></i>
+							<span class="title">
+								Patient
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/patient">
+							<i class="fa fa-users"></i>
+							<span class="title">
+								Patient
+							</span>
+						</a>
+					</li>
+			    <% end %>
+
+			    <% end %>
+
+			    <% if session[:role] == "Nurse" or session[:role] == "Doctor" %>
+
+			    <% if @page_title == "Bed" or @page_title == "Bed Allotment" %>
+
+        			<li class="active">
+
+        			<a href="javascript:;">
+						<i class="fa fa-hdd-o"></i>
+						<span class="title">
+							Bed/Ward
+						</span>
+						<span class="arrow open">
+						</span>
+						<span class="selected">
+						</span>
+						
+					</a>
+					<ul class="sub-menu">
+
+						<% if @page_title == "Bed" %>
+							<%	@class = " class = active " %>
+							<%	@classes = " " %>
+						<%	else %>
+							<%	@classes = " class = active " %>
+							<%	@class = " " %>
+						<% end %>
+						
+						<% if session[:role] == "Nurse" %>
+						
+						<li  <%= @class %> >
+							<a href="/bed">
+								<i class="fa fa-hdd-o"></i>
+								<span class="title">
+									Manage Bed
+								</span>
+								<span class="selected">
+								</span>
+							</a>	
+						</li>
+
+						<% end %>
+
+						 <li <%= @classes %> >
+							<a href="/bedallotment">
+								<i class="fa fa-exchange"></i>
+								<span class="title">
+									Bed Allotment
+								</span>
+								<span class="selected">
+								</span>
+							</a>
+						</li>
+						
+					</ul>	
+
+					</li>
+				<% else %>
+			         <li>
+						<a href="javascript:;">
+						<i class="fa fa-hdd-o"></i>
+						<span class="title">
+							Bed/Ward
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+										
+						<% if session[:role] == "Nurse" %>	
+
+						<li>
+							<a href="/bed">
+								<i class="fa fa-hdd-o"></i>
+								<span class="title">
+									Manage Bed
+								</span>
+							</a>	
+						</li>
+
+						<% end %>
+						<li>
+							<a href="/bedallotment">
+								<i class="fa fa-exchange"></i>
+								<span class="title">
+									Bed Allotments
+								</span>
+								
+							</a>
+						</li>
+					</ul>	
+						
+					</li>
+			    <% end %>
+
+				<% if @page_title == "Report" %>
+        			<li class="active">
+						<a href="/report">
+							<i class="fa fa-bar-chart-o"></i>
+							<span class="title">
+								Reports
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/report">
+							<i class="fa fa-bar-chart-o"></i>
+							<span class="title">
+								Reports
+							</span>
+						</a>
+					</li>
+			    <% end %>
+
+				<% if @page_title == "Profile" %>
+        			<li class="active">
+						<a href="/profile">
+							<i class="fa fa-cogs"></i>
+							<span class="title">
+								Profile settings
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/profile">
+							<i class="fa fa-cogs"></i>
+							<span class="title">
+								Profile settings
+							</span>
+						</a>
+					</li>
+			    <% end %>			    
+
+				<% end %>
+			    
+			    <% if session[:role] == "Admin" %>
+				
+				<% if @page_title == "Doctor" %>
+        			<li class="active">
+						<a href="/doctor">
+							<i class="fa fa-user-md"></i>
+							<span class="title">
+								Doctor
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/doctor">
+							<i class="fa fa-user-md"></i>
+							<span class="title">
+								Doctor
+							</span>
+						</a>
+					</li>
+			    <% end %>
+
+			    <% end %>
+				
+				
+
+			    <% if session[:role] == "Admin" %>
+				<% if @page_title == "Nurse" %>
+        			<li class="active">
+						<a href="/nurse">
+							<i class="fa fa-stethoscope"></i>
+							<span class="title">
+								Nurse
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/nurse">
+							<i class="fa fa-stethoscope"></i>
+							<span class="title">
+								Nurse
+							</span>
+						</a>
+					</li>
+			    <% end %>
+
+				<% if @page_title == "Pharmacist" %>
+        			<li class="active">
+						<a href="/pharmacist">
+							<i class="fa fa-medkit"></i>
+							<span class="title">
+								Pharmacist
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/pharmacist">
+							<i class="fa fa-medkit"></i>
+							<span class="title">
+								Pharmacist
+							</span>
+						</a>
+					</li>
+			    <% end %>
+				<% if @page_title == "Lab Technician" %>
+        			<li class="active">
+						<a href="/labtechnician">
+							<i class="fa fa-flask"></i>
+							<span class="title">
+								Lab Technician
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/labtechnician">
+							<i class="fa fa-flask"></i>
+							<span class="title">
+								Lab Technician
+							</span>
+						</a>
+					</li>
+			    <% end %>
+				<% if @page_title == "Accountant" %>
+        			<li class="active">
+						<a href="/accountant">
+							<i class="fa fa-money"></i>
+							<span class="title">
+								Accountant
+							</span>
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+				<% else %>
+			         <li>
+						<a href="/accountant">
+							<i class="fa fa-money"></i>
+							<span class="title">
+								Accountant
+							</span>
+						</a>
+					</li>
+			    <% end %>
+				<li>
+					<a href="javascript:;">
+						<i class="fa fa-sitemap"></i>
+						<span class="title">
+							Monitor Hospital
+						</span>
+						
+					</a>
+					
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="fa fa-gift"></i>
+						<span class="title">
+							Settings
+						</span>
+						
+					</a>
+					
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="fa fa-folder-open"></i>
+						<span class="title">
+							Account
+						</span>
+						
+					</a>
+					
+				</li>
+				<% end %>
+				</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN STYLE CUSTOMIZER -->
+			<div class="theme-panel hidden-xs hidden-sm">
+				<div class="toggler">
+				</div>
+				<div class="toggler-close">
+				</div>
+				<div class="theme-options">
+					<div class="theme-option theme-colors clearfix">
+						<span>
+							 THEME COLOR
+						</span>
+						<ul>
+							<li class="color-black current color-default" data-style="default">
+							</li>
+							<li class="color-blue" data-style="blue">
+							</li>
+							<li class="color-brown" data-style="brown">
+							</li>
+							<li class="color-purple" data-style="purple">
+							</li>
+							<li class="color-grey" data-style="grey">
+							</li>
+							<li class="color-white color-light" data-style="light">
+							</li>
+						</ul>
+					</div>
+					<div class="theme-option">
+						<span>
+							 Layout
+						</span>
+						<select class="layout-option form-control input-small">
+							<option value="fluid" selected="selected">Fluid</option>
+							<option value="boxed">Boxed</option>
+						</select>
+					</div>
+					<div class="theme-option">
+						<span>
+							 Header
+						</span>
+						<select class="header-option form-control input-small">
+							<option value="fixed" selected="selected">Fixed</option>
+							<option value="default">Default</option>
+						</select>
+					</div>
+					<div class="theme-option">
+						<span>
+							 Sidebar
+						</span>
+						<select class="sidebar-option form-control input-small">
+							<option value="fixed">Fixed</option>
+							<option value="default" selected="selected">Default</option>
+						</select>
+					</div>
+					<div class="theme-option">
+						<span>
+							 Sidebar Position
+						</span>
+						<select class="sidebar-pos-option form-control input-small">
+							<option value="left" selected="selected">Left</option>
+							<option value="right">Right</option>
+						</select>
+					</div>
+					<div class="theme-option">
+						<span>
+							 Footer
+						</span>
+						<select class="footer-option form-control input-small">
+							<option value="fixed">Fixed</option>
+							<option value="default" selected="selected">Default</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- BEGIN PAGE HEADER-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+					<h3 class="page-title">
+					Sense Systems <small>total management</small>
+					</h3>
+					<ul class="page-breadcrumb breadcrumb">
+						<li class="btn-group">
+							<button type="button" class="btn btn-md blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+							<span>
+								Actions
+							</span>
+							<i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li>
+									<a href="#">
+										Action
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Another action
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Something else here
+									</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">
+										Separated link
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<i class="<%= @page_title_icon_class %>"></i>
+								<%= @page_title %>
+						</li>
+					</ul>
+					<!-- END PAGE TITLE & BREADCRUMB-->
+				</div>
+			</div>
+			<!-- END PAGE HEADER-->
+
+
+			<% if !flash[:notice].blank? %>
+        			<div class="alert alert-success flash fade-in">
+        			<a class="close" data-dismiss="alert">×</a>
+          				<%= flash[:notice] %>
+        			</div>
+      		<% end %>
+
+			<% if !flash[:error].blank? %>
+				<div class="alert alert-danger fade-in" style="max-width:1000px; margin:0 auto; text-align:center;">
+					<a class="close" data-dismiss="alert">×</a>
+							<%= flash[:error] %>
+				</div> <br>
+			<% end %>	
+
+			<%= yield %>
+
+		</div>
+	</div>
+</div>
+
+<!-- BEGIN FOOTER -->
+<div class="footer">
+	<div class="footer-inner">
+		 2015 &copy; Sense Inc.
+	</div>
+	<div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+	</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<script src="assets/plugins/excanvas.min.js"></script> 
+<![endif]-->
+
+
+<%= javascript_include_tag('jquery-1.10.2.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<% javascript_include_tag('jquery-migrate-1.2.1.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('admin.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<%= javascript_include_tag('jquery-ui-1.10.3.custom.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+
+
+<%# javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%# csrf_meta_tags %>
+<%= javascript_include_tag('jquery.dataTables.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('DT_bootstrap.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('table-managed.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-hover-dropdown.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.slimscroll.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.blockui.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.cokie.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.uniform.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<%= javascript_include_tag('jquery.flot.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('jquery.flot.resize.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('jquery.flot.categories.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('jquery.pulsate.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('moment.min.js', :type => 'text/javascript', "data-turbolinks-trac" => true) %>
+<%= javascript_include_tag('daterangepicker.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.gritter.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.validate.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('select2.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('wysihtml5-0.3.0.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-wysihtml5.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('bootstrap-datetimepicker.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-datepicker.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-timepicker.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('bootstrap-markdown.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('markdown.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+<%= javascript_include_tag('fullcalendar.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('spinner.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('pwstrength.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap.touchspin.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('handlebars.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('typeahead.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-maxlength.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap-select.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('jquery.multi-select.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+
+<%# javascript_include_tag('jquery.easy-pie-chart.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%# javascript_include_tag('jquery.sparkline.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END PAGE LEVEL PLUGINS -->
+
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<%= javascript_include_tag('app.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('Chart.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('additional-methods.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('form-validation.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('components-pickers.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('components-form-tools.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('components-dropdowns.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('index.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('tasks.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+
+
+<%# javascript_include_tag('access.j', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+
+<%= javascript_include_tag('admin.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= csrf_meta_tags %>
+
+
+<script  type="text/javascript">
+jQuery(document).ready(function() {    
+   App.init(); // initlayout and core plugins
+   Index.init();
+   Index.initCalendar();
+   FormValidation.init();
+   TableManaged.init();
+   ComponentsDropdowns.init();
+   ComponentsFormTools.init();
+   ComponentsPickers.init();
+   ComponentsDropdowns.init();
+   
+   //Charts.initBarCharts();
+
+   //UIAlertDialogApi.init();
+   
+   
+   // Index.initJQVMAP(); // init index page's custom scripts   
+   //Index.initCharts(); // init index page's custom scripts
+   //Index.initChat();
+   //Index.initMiniCharts();
+   //Index.initDashboardDaterange();
+   //Index.initIntro();
+   //Tasks.initDashboardWidget();
+  
+});
+window.setTimeout(function() {
+  $(".flash").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+  });
+}, 5000);
+
+
+//var elem = document.getElementById("touchspin_demo1");
+//var elem2 = document.getElementById("start");
+
+//var elem.value = "2"
+//document.getElementsById('touchspin_demo1').value = 50 ;
+//document.getElementById("start")
+
+<% if @page_title == "Report" %>
+
+	var barChartData = {
+		labels : ["January","February","March","April","May","June","July"],
+		datasets : [
+			{
+				fillColor: "rgba(151,187,205,0.2)",
+	            strokeColor: "rgba(151,187,205,1)",
+	            pointColor: "rgba(151,187,205,1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(151,187,205,1)",
+				data : <%= @result_male %>	
+			},
+			{
+				fillColor: "rgba(220,220,220,0.2)",
+	            strokeColor: "rgba(220,220,220,1)",
+	            pointColor: "rgba(220,220,220,1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(220,220,220,1)",
+				data : <%= @result %>
+			}
+		]
+
+	}
+
+	var randomScalingFactor = function(){ return Math.round(Math.random()*10)};
+	var barChartDatas = {
+		labels : ["(0-19) Youth","(20-29) Adult","(30-59) Older Adult","(60-89) Senior","(90 and above) Elderly"],
+		datasets : [
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,0.8)",
+				highlightFill : "rgba(151,187,205,0.75)",
+				highlightStroke : "rgba(151,187,205,1)",
+				data : <%= @result_age_m.reverse %>
+			},
+			{
+				fillColor : "rgba(229, 184, 184, 0.52)",
+				strokeColor : "rgba(229, 184, 184,0.8)",
+				highlightFill: "rgba(229, 184, 184,0.75)",
+				highlightStroke: "rgba(229, 184, 184,1)",
+				data :  <%= @result_age.reverse %>
+			}
+		]
+
+	}
+
+
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		var ctxs = document.getElementById("canvass").getContext("2d");
+		window.myBar = new Chart(ctx).Line(barChartData, {
+			responsive : true
+		});
+		window.myBar2 = new Chart(ctxs).Bar(barChartDatas, {
+			responsive : true
+		});
+	}
+
+	//$('#report2').click(function(){
+		//alert('hey');
+    //	$('#tab_1_3').removeClass('hidden');
+    	
+	//});
+		
+	
+
+<% end %>
+</script>
+
+
+<script type="text/javascript">
+//$(window).load(function(){
+  //      $('#large').modal('show');
+//});
+</script>
+
+
+
+
+</body>
+</html>

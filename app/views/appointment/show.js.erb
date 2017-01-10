@@ -1,0 +1,8 @@
+$('#people_table').prepend("<%= j render partial: 'table_row', locals: {person: @person } %>");
+$('#note').append("<%= j render partial: 'notice', locals: {person: @person } %>");
+$('#large').removeClass('has-error');
+$('#error_explanation').hide();
+$('#formerror').hide();
+//$('form').html('<%= escape_javascript render("form") %>');
+$('#large').find('form input[type="text"]').val('');
+$('#large').modal('hide');

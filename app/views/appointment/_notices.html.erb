@@ -1,0 +1,7 @@
+<% if !flash[:error].blank? %>
+				<div id='formerror' class="alert alert-danger fade-in" style="max-width:1000px; margin:0 auto; text-align:center;">
+					<a class="close" data-dismiss="alert">×</a>
+							<%= flash[:error] %>
+				</div> <br>
+<% end %>
+

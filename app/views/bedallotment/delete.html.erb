@@ -1,0 +1,57 @@
+<% @page_title_icon_class = "fa fa-wrench" %>
+<% @page_title = "Bed Allotment" %>
+
+<!-- END STYLE CUSTOMIZER -->
+				<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box red" style="max-width:50%; margin-left:25%; ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Delete Bed Allotment
+							</div>
+							<div class="tools">
+								<i class="fa fa-warning"></i>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<%= form_for(:bed, :url => {:action => 'destroy', :id => @alloted_bed.id}, :html => {:class => 'form-horizontal', :role => 'form'}) do %>
+							
+								<div class="form-group">
+										
+											<div class="col-md-12">
+												<center><h5><strong>Are you sure you want to permanently delete this allotment?</strong></h5>
+												<h4><%= @alloted_bed.patient.name %></h4><h3><% if @alloted_bed.bed.wardtype.split.size > 1 %>
+																		<% if @alloted_bed.bed.wardtype.split.size == 2 %>
+																			<%= @alloted_bed.bed.wardtype.split.first.first.upcase + @alloted_bed.bed.wardtype.split.second.first.upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+																		<% elsif @alloted_bed.bed.wardtype.split.size > 2 %>
+																			<%= @alloted_bed.bed.wardtype.split.first.first.upcase + @alloted_bed.bed.wardtype.split.second.first.upcase + @alloted_bed.bed.wardtype.split.third.first.upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+																		<% end %>
+																	<% else %>
+																		<%= @alloted_bed.bed.wardtype[0].upcase + @alloted_bed.bed.wardtype[1].upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+																	<% end %> - <%= @alloted_bed.bed.wardtype %></h3></center>
+											</div>
+									</div>
+								
+	 							 
+
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Delete", :class => 'btn red')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->

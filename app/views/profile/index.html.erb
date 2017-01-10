@@ -1,0 +1,343 @@
+<% @page_title_icon_class = "fa fa-lock" %>
+<% @page_title = "Profile" %>
+
+<!-- END STYLE CUSTOMIZER -->
+
+
+				<div class="tab-pane" id="tab_1_3">
+								<div class="row profile-account">
+									<div class="col-md-3" id="tpane">
+										<ul class="ver-inline-menu tabbable margin-bottom-10">
+											<li class="active">
+												<a data-toggle="tab" href="#tab_1-1">
+													<i class="fa fa-user"></i> Personal info
+												</a>
+												<span class="after">
+												</span>
+											</li>
+											<li class="">
+												<a data-toggle="tab" href="#tab_2-2">
+													<i class="fa fa-cogs"></i> Change Password
+												</a>
+											</li>
+											
+										</ul>
+									</div>
+									<div class="col-md-9">
+										<div class="tab-content">
+											<div id="tab_1-1" class="tab-pane active">
+												<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box light-grey" style="max-width:1000px; margin:0 auto; ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Profile
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form" >
+							<%= form_for(:profile, :url => {:action => 'update',  :id => session[:id]}, :html => {:id => "form_sample_1", :class => 'form-horizontal'}) do |f| %>
+															
+								<div class="form-body" >
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Name
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_field(:name, :class => 'form-control', :placeholder => '', :required => :true) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Email
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_field(:email, :class => 'form-control', :placeholder => 'Enter a valid email', :type => :email, :required => :true) %>
+										</div>
+									</div>
+
+									
+									<div class="form-group">
+										<label class="control-label col-md-3">Phone
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_field(:phone, :class => 'form-control', :type => 'tel', :pattern => '^(01|07|08|09)\d{3} \d{6}$', :required => :true) %><em> e.g 01752 252525</em>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Address
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_area(:address, :class => 'wysihtml5 form-control', :rows => '4', :required => :true) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Postcode
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_field(:postcode, :class => 'form-control', :pattern => '^((([A-PR-UWYZ][0-9])|([A-PR-UWYZ][0-9][0-9])|([A-PR-UWYZ][A-HK-Y][0-9])|([A-PR-UWYZ][A-HK-Y][0-9][0-9])|([A-PR-UWYZ][0-9][A-HJKSTUW])|([A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRVWXY]))\s?([0-9][ABD-HJLNP-UW-Z]{2})|(GIR)\s?(0AA))$', :required => :true) %><em> e.g XY9 8AB</em>
+										</div>
+									</div>
+									<% if session[:role] == "Nurse" %>
+									<div class="form-group">
+										<label class="control-label col-md-3"> Specialty
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_area(:specialty, :class => 'form-control', :rows => '4', :required => :false) %>
+										</div>
+									</div>
+									<% end %>
+
+
+								</div>
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Save", :class => 'btn green')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+											</div>
+				<div id="tab_2-2" class="tab-pane">
+					<% if !flash[:error_password].blank? %>
+							<div class="alert alert-danger fade-in">
+								<a class="close" data-dismiss="alert">×</a>
+										<%= flash[:error_password] %>
+							</div> <br>
+						<% end %>			
+
+						<% if !flash[:notice_password].blank? %>
+							<div class="alert alert-danger fade-in">
+								<a class="close" data-dismiss="alert">×</a>
+										<%= flash[:notice_password] %>
+							</div> <br>
+						<% end %>
+					<div class="portlet box light-grey" style="max-width:1000px; margin:0 auto;" >
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i> Change Password
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+
+							<%= form_tag({:action => 'password_change'}, :id => "form_sample_1", :class => 'form-horizontal') do %>
+							
+								<div class="form-body">
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Current Password
+										<span class="require">
+											 
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%# f.text_field(:password, :class => 'form-control', :type => 'password', :required => :true) %>
+											<%= text_field_tag(:password, nil, :class => 'form-control placeholder-no-fix', :type => :password, :autocomplete => 'off', :required => :true) %>
+											<span class="help-block">
+												
+											</span>
+										</div>
+									</div>
+																	
+									<div class="form-group">
+										<label class="col-md-3 control-label">New Password
+											<span class="require">
+											 
+										</span>
+										</label>
+											<div class="col-md-9 last password-strength">
+												<input class="form-control" type="password" name="new_password" id="password_strength" required>
+												<%# f.text_field(:new_password, :class => 'form-control', :type => 'password', :id => "password_strength", :required => :true) %>
+											</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-md-3 control-label">Re-type New Password
+											<span class="require">
+											 
+										</span>
+										</label>
+											<div class="col-md-9">
+												<input class="form-control" type="password" name="retype_password" id="password_strength" required>
+												<%# f.text_field(:retype_password, :class => 'form-control', :type => 'password', :required => :true) %>
+											</div>
+									</div>
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Change password", :class => 'btn green')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+								</div>
+							
+							<% end %>
+							<div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<h4 class="modal-title"><strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong></h4>
+								</div>
+								<div class="modal-body">
+	
+								<div id='notes'>
+
+								</div>
+
+								<% if !flash[:errors].blank? %>
+									<div class="alert alert-danger fade-in" style="max-width:1000px; margin:0 auto; text-align:center;">
+										<a class="close" data-dismiss="alert">×</a>
+												<%= flash[:errors] %>
+									</div> <br>
+								<% end %>				
+												<!-- BEGIN SAMPLE FORM PORTLET-->
+							<div class="portlet box green ">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-reorder"></i> Add Appointment
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="" class="reload">
+										</a>
+									</div>
+								</div>
+								<div class="portlet-body form">
+									
+								<%# render 'newform', modal: true %>ffffffff
+
+								</div>
+							</div>
+							<!-- END SAMPLE FORM PORTLET-->
+
+								</div>
+												<div class="modal-footer">
+													<button type="button" class="btn default" data-dismiss="modal">Close</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+							<!-- /.modal -->
+
+
+
+
+					<div class="modal fade bs-modal-lg" id="more" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<h4 class="modal-title"><strong>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/electrical_sensor2.png" alt=""/> SENSE</strong></h4>
+								</div>
+								<div class="modal-body">
+															
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+			<!-- /.modal -->
+
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+											</div>
+											
+										</div>
+									</div>
+									<!--end col-md-9-->
+								</div>
+							</div>
+							<!--end tab-pane-->
+							
+
+					
+
+							<br><br><br><br>
+
+
+		
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+
+<%= javascript_include_tag('jquery-1.10.2.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+<%= javascript_include_tag('bootstrap.min.js', :type => 'text/javascript', "data-turbolinks-track" => true) %>
+
+<% if !flash[:error_password].blank? %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+    	//$('.tpane li').click(function() {
+        $('.tpane li').siblings('li').removeClass('active');
+        $('.tpane li').addClass('active');
+   // });
+});
+	</script>
+<% end %>	
+

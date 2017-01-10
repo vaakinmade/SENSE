@@ -1,0 +1,124 @@
+<% @page_title_icon_class = "fa fa-wrench" %>
+<% @page_title = "Bed Allotment" %>
+
+<!-- END STYLE CUSTOMIZER -->
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box light-grey" style="max-width:1000px; margin:0 auto; ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Edit Bed Allotment
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<%= form_for(:alloted_bed, :url => {:action => 'update', :id => @alloted_bed.id}, :html => {:id => 'form_sample_1', :class => 'form-horizontal', :role => 'form'}) do |f| %>
+							
+								<div class="form-body" >
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+
+									<div class="form-group">
+										<div class="col-md-9">
+											<%= f.text_field(:alloted_by, :class => 'form-control', :type => 'hidden', :value => session[:role] + " " + session[:name]) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Ward
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:bed_id, Bed.where(:id => @alloted_bed.bed.id), :id, :bedward, {:prompt => @alloted_bed.bed.wardtype}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Patient
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.collection_select(:patient_id, Patient.all, :id, :name, {:prompt=>'Select Patient'}, { :class => 'col-md-3 form-control', :required => :true }) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+												<label class="control-label col-md-3">Allocation date
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-3">
+													<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-start-date="+0d">
+														<%= f.text_field(:allotmentdate, :class => 'form-control', :required => :true) %>
+														<span class="input-group-btn">
+															<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+														</span>
+													</div>
+													<!-- /input-group -->
+													<span class="help-block">
+														 Select date
+													</span>
+												</div>
+									</div>
+
+									<div class="form-group">
+												<label class="control-label col-md-3">Discharge date
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-3">
+													<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-start-date="+0d">
+														<%= f.text_field(:dischargedate, :class => 'form-control', :required => :true) %>
+														<span class="input-group-btn">
+															<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+														</span>
+													</div>
+													<!-- /input-group -->
+													<span class="help-block">
+														 Select date
+													</span>
+												</div>
+									</div>
+
+									
+								</div>
+
+								<div class="form-actions fluid">
+									<div<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Save", :class => 'btn green')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+

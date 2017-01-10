@@ -1,0 +1,33 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+
+*= require bootstrap.min.css
+*= require scaffolds.css
+
+
+ *= require font-awesome.css
+ *= require bootstrap.min.css
+ *= require uniform.default.css
+ *= require select2.css
+ *= require select2-metronic.css
+ *= require bootstrap-wysihtml5
+
+ *= require DT_bootstrap
+ *= require datepicker
+ *= require bootstrap-timepicker.min
+ *= require jquery.gritter.css
+ *= require daterangepicker-bs3.css
+ *= require fullcalendar.css
+ *= require bootstrap-select.min
+ *= require multi-select
+ 
+
+ *= require style-metronic.css
+ *= require style.css
+ *= require style-responsive.css
+ *= require plugins.css
+ *= require tasks.css
+ *= require default.css
+ *= require print.css 
+ */

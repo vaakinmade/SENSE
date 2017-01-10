@@ -1,0 +1,9 @@
+<%- if !flash[:error].blank? %> 
+  $('#large').html('<%= escape_javascript(render :partial => "newform") %>');
+<%- else %>
+  $('#large').modal('hide').empty();
+  window.location.reload();
+<%- end %>
+
+
+

@@ -1,0 +1,137 @@
+<% @page_title_icon_class = "fa fa-hdd-o" %>
+<% @page_title = "Bed" %>
+
+<!-- END STYLE CUSTOMIZER -->
+					<!-- BEGIN SAMPLE FORM PORTLET-->
+					<div class="portlet box light-grey" style="max-width:1000px; margin:0 auto; ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-reorder"></i> Edit Bed
+							</div>
+							<div class="tools">
+								<a href="" class="collapse">
+								</a>
+								<a href="" class="reload">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<%= form_for(:bed, :url => {:action => 'update', :id => @bed.id}, :html => {:id => 'form_sample_1', :class => 'form-horizontal', :role => 'form'}) do |f| %>
+							
+								<div class="form-body" >
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										form validation successful
+									</div>
+
+									<div class="form-group">
+										<div class="col-md-9">
+											<%= f.text_field(:nurse_id, :class => 'form-control', :type => 'hidden', :value => session[:id]) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Number
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<div id="spinner1">
+												<div class="input-group input-small">
+													<%= f.text_field(:bednumber, :class => 'spinner-input form-control', :maxlength => '3', :required => :true) %>
+														<div class="spinner-buttons input-group-btn btn-group-vertical">
+														<button type="button" class="btn spinner-up btn-xs blue">
+														<i class="fa fa-angle-up"></i>
+														</button>
+														<button type="button" class="btn spinner-down btn-xs blue">
+														<i class="fa fa-angle-down"></i>
+														</button>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Ward Type
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.select :wardtype, options_for_select([['Standard Ward','Standard Ward'], ['Standard +','Standard +'], ['Intensive Care Unit (ICU)','Intensive Care Unit (ICU)'],['Maternity','Maternity'],['Paediatric','Paediatric'],['Semi-Private Ward','Semi-Private Ward'],['Private Room','Private Room']], :selected => @bed.wardtype), {}, { :class => 'col-md-3 form-control', :required => :true } %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Daily Rate
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9 input-inline input-medium">
+											<%= f.text_field(:dailyrate, :id => 'touchspin_demo1', :class => 'form-control', :required => :true) %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Deposit
+										
+										</label>
+										<div class="col-md-9 input-inline input-medium">
+											<%= f.text_field(:deposit, :id => 'touchspin_demo10', :class => 'form-control') %>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Facilities
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.text_area :description, :rows => '2', :class => 'form-control select2', :type => 'hidden', :id => 'select2_sample_modal_5' %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-md-3">Status
+										<span class="required">
+											 *
+										</span>
+										</label>
+										<div class="col-md-9">
+											<%= f.select :status, options_for_select([['Available','available'],['Unavailable','unavailable']], :selected => @bed.status), {}, { :class => 'col-md-3 form-control', :required => :true } %>
+										</div>
+									</div>
+
+									
+								</div>
+
+								<div class="form-actions fluid">
+									<div class="col-md-offset-3 col-md-9">
+										<%= submit_tag("Save", :class => 'btn green')%>
+										<%= link_to("Cancel", {:action => 'index'}, :class => 'btn default') %>
+									</div>
+								</div>
+							
+							<% end %>
+						</div>
+					</div>
+					<!-- END SAMPLE FORM PORTLET-->
+
+					<!-- END EXAMPLE TABLE PORTLET-->
+
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+

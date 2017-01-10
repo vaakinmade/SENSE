@@ -1,0 +1,158 @@
+<% @page_title_icon_class = "fa fa-wrench" %>
+<% @page_title = "Bed Allotment" %>
+
+<!-- END STYLE CUSTOMIZER -->
+			<div class="tab-pane " id="tab_3">
+								<div class="portlet box blue">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-reorder"></i>View Bed Allotment
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse">
+											</a>
+											<a href="javascript:;" class="reload">
+											</a>
+										</div>
+									</div>
+									<div class="portlet-body form">
+										<!-- BEGIN FORM-->
+										<form class="form-horizontal" role="form">
+											<div class="form-body">
+												<h2 class="margin-bottom-20"> Details </h2>
+												
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Bed Number:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+															<% if @alloted_bed.bed.wardtype.split.size > 1 %>
+																<% if @alloted_bed.bed.wardtype.split.size == 2 %>
+																	<%= @alloted_bed.bed.wardtype.split.first.first.upcase + @alloted_bed.bed.wardtype.split.second.first.upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+																<% elsif @alloted_bed.bed.wardtype.split.size > 2 %>
+																	<%= @alloted_bed.bed.wardtype.split.first.first.upcase + @alloted_bed.bed.wardtype.split.second.first.upcase + @alloted_bed.bed.wardtype.split.third.first.upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+																<% end %>
+															<% else %>
+																<%= @alloted_bed.bed.wardtype[0].upcase + @alloted_bed.bed.wardtype[1].upcase + 0.to_s + @alloted_bed.bed.bednumber.to_s %>
+															<% end %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Ward:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	<%= @alloted_bed.bed.wardtype %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Patient:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	<%= @alloted_bed.patient.name %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Allotment date:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 <%= @alloted_bed.allotmentdate %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Discharge date:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 <%= @alloted_bed.dischargedate %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Alloted by:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	<%= @alloted_bed.alloted_by %> 
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+						
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Last updated at:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 <%= @alloted_bed.updated_at %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Created at:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 <%= @alloted_bed.created_at %>
+																</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+																								
+											<div class="form-actions fluid">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="col-md-offset-3 col-md-9">
+															<%= link_to("Done", {:action => 'index'}, :class => 'btn default') %>
+														</div>
+													</div>
+													<div class="col-md-6">
+													</div>
+												</div>
+											</div>
+										</form>
+										<!-- END FORM-->
+									</div>
+								</div>
+							</div>
+
+							
+
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
