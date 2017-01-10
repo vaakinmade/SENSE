@@ -1,5 +1,5 @@
-src/main/resources/static/* linguist-vendored
+app/views/* linguist-vendored
 
-projects-docs/* linguist-documentation
+app/* linguist-documentation
 
 *.rb linguist-language=Ruby
